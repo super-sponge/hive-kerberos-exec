@@ -23,6 +23,8 @@ do
 jars=$jars:$jar
 done
 
+jars=$jars:/usr/hdp/current/hive-client/jdbc/hive-jdbc-1.2.1000.2.6.2.0-205-standalone.jar
+
 
 
 #java -cp $jars $LOG4J_PARAMS  com.asia.hive.HiveExec -k /tmp/dcadmin.keytab -p "dcadmin@DC.COM" -j "jdbc:hive2://dcdn026:10000/;principal=hive/dcdn026@DC.COM" -c "show databases"

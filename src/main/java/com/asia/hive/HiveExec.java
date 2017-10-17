@@ -8,12 +8,15 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * Created by sponge on 2017/4/19 0019.
  */
 public class HiveExec {
     private static  final  Logger LOG = LoggerFactory.getLogger(HiveExec.class);
+
+    private static final Properties info = new Properties();
 
     public static void main(String[] args) throws IOException {
         try {
@@ -70,7 +73,7 @@ public class HiveExec {
     }
 
     private static void ExeSQL(String jdbc, String sql) throws SQLException {
-        Connection con = DriverManager.getConnection(jdbc);
+        Connection con = DriverManager.getConnection(jdbc, info);
 
         Statement stmt = con.createStatement();
         for(String sub_sql: sql.split(";")) {
