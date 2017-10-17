@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 
+if [ -z "$JAVA_HOME" ]; then
+    export JAVA_HOME=/usr/jdk64/jdk1.8.0_112/
+    export PATH=$JAVA_HOME/bin:$PATH
+    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+fi
+
+
 if [ ! -n "$1" ] ;then
     echo "you have not input a sql"
     exit
@@ -10,7 +17,7 @@ fi
 
 sql=$1
 
-base_dir=$(dirname $0)/..
+base_dir=$(cd `dirname $0`/..;pwd)
 LOG4J=$base_dir/conf/log4j.properties
 if [ -f $LOG4J ]; then
     export LOG4J_PARAMS="-Dlog4j.configuration=file:$LOG4J"
